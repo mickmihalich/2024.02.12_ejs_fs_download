@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 import mainRouter from '../routes/main.js';
+import downRouter from '../routes/download.js'
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/', mainRouter);
+app.use('/file/*', downRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
